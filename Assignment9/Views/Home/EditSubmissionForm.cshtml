@@ -1,0 +1,59 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<h3>
+    Edit this Movie
+</h3>
+
+@model  Assignment9.Models.MovieModel
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="MovieId" value="@ViewBag.editmovies.MovieId" />
+    <br />
+    <label asp-for="Category">Category: </label>
+    <br />
+    <input type="text" asp-for="Category" value="@ViewBag.editmovies.Category" />
+    <br />
+    <label asp-for="Title">Title: </label>
+    <br />
+    <input type="text" asp-for="Title" value="@ViewBag.editmovies.Title" />
+    <br />
+    <label asp-for="Year">Year: </label>
+    <br />
+    <input type="text" asp-for="Year" value="@ViewBag.editmovies.Year"/>
+    <br />
+    <label asp-for="Director">Director: </label>
+    <br />
+    <input type="text" asp-for="Director" value="@ViewBag.editmovies.Director"/>
+    <br />
+    <label asp-for="Rating">Rating: </label>
+    <br />
+    <select name="Rating" id="rating" asp-for="Rating">
+        <!option @if (ViewBag.editmovies.Rating == "") { <text> selected="selected" </text> } value="">Select a rating</!option>
+        <!option @if (ViewBag.editmovies.Rating == "G") { <text> selected="selected" </text> } value="G">G</!option>
+        <!option @if (ViewBag.editmovies.Rating == "PG") { <text> selected="selected" </text> } value="PG">PG</!option>
+        <!option @if (ViewBag.editmovies.Rating == "PG-13") { <text> selected="selected" </text> } value="PG-13">PG-13</!option>
+        <!option @if (ViewBag.editmovies.Rating == "R") { <text> selected="selected" </text> } value="R">R</!option>
+    </select>
+    <br />
+    <label asp-for="Edited">Edited: </label>
+    <br />
+    <select name="edited" id="edited" asp-for="Edited">
+        <!option value="false">Select an option</!option>
+        <!option @if (ViewBag.editmovies.Edited == false) { <text> selected="selected" </text> } value="false">No</!option>
+        <!option @if (ViewBag.editmovies.Edited == true) { <text> selected="selected" </text> } value="true">Yes</!option>
+    </select>
+    <br />
+    <label asp-for="LentTo">LentTo: </label>
+    <br />
+    <input type="text" asp-for="LentTo" value="@ViewBag.editmovies.LentTo"/>
+    <br />
+    <label asp-for="Notes">Notes: </label>
+    <br />
+    <textarea rows="4" cols="50" maxlength="25" placeholder="Enter text here" asp-for="Notes" value="@ViewBag.editmovies.Notes"></textarea>
+    <br />
+    <button type="submit" id="submitbutton">Submit Edits to Movie Selection</button>
+    <div asp-validation-summary="All"></div>
+</form>

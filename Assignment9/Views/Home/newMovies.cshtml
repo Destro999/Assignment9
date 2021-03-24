@@ -1,0 +1,54 @@
+﻿@{
+}
+
+@model Assignment9.Models.MovieModel
+
+<fieldset>
+    <legend>Enter your Movie Suggestion Here: </legend>
+    <form class="form" asp-action="newMovies" method="post">
+        <label asp-for="Category">Category: </label>
+        <br />
+        <input type="text" asp-for="Category" />
+        <br />
+        <label asp-for="Title">Title: </label>
+        <br />
+        <input type="text" asp-for="Title" />
+        <br />
+        <label asp-for="Year">Year: </label>
+        <br />
+        <input type="text" asp-for="Year" />
+        <br />
+        <label asp-for="Director">Director: </label>
+        <br />
+        <input type="text" asp-for="Director" />
+        <br />
+        <label asp-for="Rating">Rating: </label>
+        <br />
+        <select name="Rating" id="rating" asp-for="Rating">
+            <option value="r">R</option>
+            <option value="pg13">PG-13</option>
+            <option value="pg">PG</option>
+            <option value="g">G</option>
+        </select>
+        <br />
+        <label asp-for="Edited">Edited: </label>
+        <br />
+        <select name="edited" id="edited" asp-for="Edited">
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+        </select>
+        <br />
+        <label asp-for="LentTo">LentTo: </label>
+        <br />
+        <input type="text" asp-for="LentTo" />
+        <br />
+        <label asp-for="Notes">Notes: </label>
+        <br />
+        <textarea rows="4" cols="50" maxlength="25" placeholder="Enter text here" asp-for="Notes"></textarea>
+        <br />
+        <button type="submit" id="calculate">Submit Movies</button>
+    </form>
+    
+</fieldset>
+
+<h1 style="color:red">@ViewBag.Message</h1>

@@ -1,0 +1,49 @@
+﻿
+@model IEnumerable<MovieModel>
+
+<div>
+    <h2>My Current Movies</h2>
+</div>
+
+<table class="table-active">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Category</th>
+            <th scope="col">Title</th>
+            <th scope="col">Year</th>
+            <th scope="col">Director</th>
+            <th scope="col">Rating</th>
+            <th scope="col">Edited</th>
+            <th scope="col">Lent To:</th>
+            <th scope="col">Notes</th>
+            <th scope="col"><b>Edit</b></th>
+            <th scope="col"><b>Delete</b></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Assignment9.Models.MovieModel x in Model)
+        {
+        <tr>
+            <td scope="row">@x.Category</td>
+            <td>@x.Title</td>
+            <td>@x.Year</td>
+            <td>@x.Director</td>
+            <td>@x.Edited</td>
+            <td>@x.LentTo</td>
+            <td>@x.Notes</td>
+            <td>
+                <form id="E-@x.MovieId" asp-action="EditSubmissionForm" method="post">
+                    <input type="hidden" asp-for="@x.MovieId" name="editId" />
+                    <button type="submit" class="btn-sm btn-info">Edit</button>
+                </form>
+            </td>
+            <td>
+                <form id="D-@x.MovieId" asp-action="Delete" method="post">
+                    <input type="hidden" asp-for="@x.MovieId" name="deletionId" />
+                    <button type="submit" class="btn-sm btn-danger">Delete</button>
+                </form>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
